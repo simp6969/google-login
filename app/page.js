@@ -1,59 +1,118 @@
-import { useState } from "react";
+"use client";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
-export default function Login() {
+const GoogleLogin = () => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [step, setStep] = useState(1); // 1 for email, 2 for password
 
-  const handleInputChange = (e) => {
+  const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    if (step === 1 && email) {
+      setStep(2);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Email submitted: ${email}`);
-    // Your authentication logic would go here
+    if (step === 2 && email && password) {
+      alert(`Email: ${email}, Password: ${password}`);
+      // Add your authentication logic here
+    }
+  };
+
+  const handleBack = () => {
+    setStep(1);
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.loginCard}>
-        <div className={styles.logoContainer}>
+    <div className="login-container">
+      <div className="login-card">
+        <div className="logo-container">
           <FcGoogle size={48} />
         </div>
-        <h1>Sign in</h1>
-        <p>to continue to Gmail</p>
+        <h1>{step === 1 ? "Sign in" : "Welcome"}</h1>
+        <p className="mb-[32px]">
+          {step === 1
+            ? "with your Google Account. This account will be available to other Google apps in the browser."
+            : email}
+        </p>
 
-        <form onSubmit={handleSubmit}>
-          <div className={styles.inputGroup}>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={handleInputChange}
-              required
-              placeholder=" "
-            />
-            <label htmlFor="email">Email or phone</label>
-          </div>
+        {step === 1 && (
+          <form onSubmit={handleNext}>
+            <div className="input-group">
+              <input
+                type="email"
+                className="bg-[transparent] color-[rgb(227 227 227 / 1)]"
+                id="email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+                placeholder=" "
+              />
+              <label htmlFor="email">Email or phone</label>
+            </div>
 
-          <p className={styles.forgotEmail}>Forgot email?</p>
+            <a className="forgot-email">Forgot email?</a>
 
-          <p className={styles.notYourComputer}>
-            Not your computer? Use a private Browse window to sign in.
-            <br />
-            <a href="#">Learn more</a>
-          </p>
+            <p className="not-your-computer">
+              Not your computer? Use a private Browse window to sign in.
+              <br />
+              <a>Learn more</a>
+            </p>
 
-          <div className={styles.buttonGroup}>
-            <button type="button" className={styles.createAccountButton}>
-              Create account
-            </button>
-            <button type="submit" className={styles.nextButton}>
-              Next
-            </button>
-          </div>
-        </form>
+            <div className="button-group">
+              <button className="create-account-button">Create account</button>
+              <button type="submit" className="next-button">
+                Next
+              </button>
+            </div>
+          </form>
+        )}
+
+        {step === 2 && (
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <input
+                type="password"
+                className="bg-[transparent] color-[rgb(227 227 227 / 1)]"
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+                placeholder=" "
+              />
+              <label htmlFor="password">Enter your password</label>
+            </div>
+
+            <a className="forgot-password">Forgot password?</a>
+
+            <div className="button-group">
+              <button
+                type="button"
+                className="back-button"
+                onClick={handleBack}
+              >
+                Back
+              </button>
+              <button type="submit" className="next-button">
+                Next
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );
-}
+};
+
+export default GoogleLogin;

@@ -1,130 +1,191 @@
-@import "tailwindcss";
-.loginContainer {
+/* src/GoogleLogin.css */
+:root {
+  --link-color: #a8c7fa;
+  --pritmary-color: #e3e3e3;
+}
+body {
+  font-family: "Google Sans", roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+  background-color: rgb(14 14 14 / 1);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f0f0;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.loginCard {
+.login-container {
+  display: flex;
+  width: 100%;
+}
+
+.login-card {
   width: 100%;
   max-width: 450px;
-  padding: 48px 40px 36px 40px;
-  border: 1px solid #dadce0;
+  padding: 24px 24px 24px 24px;
   border-radius: 8px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-sizing: border-box;
 }
 
-.logoContainer {
+.logo-container {
   margin-bottom: 24px;
 }
 
-.loginCard h1 {
-  font-size: 24px;
-  font-weight: 400;
-  color: #202124;
+h1 {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--pritmary-color);
   margin: 0 0 8px 0;
 }
 
-.loginCard p {
-  color: #5f6368;
+p {
+  color: #e3e3e3;
   font-size: 16px;
   line-height: 1.5;
   margin: 0;
 }
 
-.inputGroup {
+.input-group {
   position: relative;
   margin-top: 32px;
   margin-bottom: 24px;
 }
 
-.inputGroup input {
+.input-group input {
   width: 100%;
   padding: 16px 14px;
   border: 1px solid #dadce0;
   border-radius: 4px;
   font-size: 16px;
   box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s;
+  background-color: transparent;
+  color: #e8f0fe;
 }
 
-.inputGroup input:focus {
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 1px #1a73e8;
+.input-group input:focus {
+  border-color: var(--link-color);
   outline: none;
 }
 
-.inputGroup label {
+.input-group label {
   position: absolute;
   top: 18px;
   left: 14px;
-  color: #80868b;
+  color: rgb(227 227 227 / 1);
   pointer-events: none;
-  transition: transform 0.3s, font-size 0.3s, color 0.3s;
-  background-color: #fff;
+  transition: transform 0.3s, font-size 0.3s;
+  background-color: transparent;
   padding: 0 4px;
 }
 
-.inputGroup input:focus + label,
-.inputGroup input:not(:placeholder-shown) + label {
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
   transform: translateY(-28px) translateX(-5px) scale(0.75);
-  color: #1a73e8;
+  color: var(--link-color);
 }
 
-.forgotEmail {
+.forgot-email {
   text-align: left;
   margin-top: 16px;
-}
-
-.forgotEmail a {
-  color: #1a73e8;
+  color: var(--link-color);
   text-decoration: none;
   font-weight: 500;
 }
 
-.notYourComputer {
+.forgot-email a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.not-your-computer {
   text-align: left;
   font-size: 14px;
   margin-top: 48px;
 }
 
-.notYourComputer a {
-  color: #1a73e8;
+.not-your-computer a {
+  color: var(--link-color);
   text-decoration: none;
 }
 
-.buttonGroup {
+.button-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 48px;
 }
 
-.createAccountButton,
-.nextButton {
+.create-account-button {
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  color: var(--link-color);
+  background-color: transparent;
+}
+.next-button {
   padding: 10px 24px;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   border: none;
+  background-color: var(--link-color);
+  color: #062e6f;
 }
 
-.createAccountButton {
-  color: #1a73e8;
+.user-identifier {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #e8f0fe;
+  border-radius: 16px;
+  margin-top: 24px;
+}
+
+.user-email {
+  font-weight: 500;
+  color: var(--link-color);
+  font-size: 14px;
+}
+
+.show-password-container {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.show-password-container input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+}
+
+.show-password-container label {
+  font-size: 14px;
+  color: #5f6368;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+.back-button {
   background-color: transparent;
+  color: #8ab4f8; /* Same color as other links */
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #5f6368; /* Subtle border */
+  cursor: pointer;
 }
 
-.nextButton {
-  background-color: #1a73e8;
-  color: #fff;
-  transition: background-color 0.2s;
-}
-
-.nextButton:hover {
-  background-color: #1669c5;
+.back-button:hover {
+  background-color: rgba(138, 180, 248, 0.08); /* Light hover effect */
 }
