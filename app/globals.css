@@ -189,3 +189,32 @@ p {
 .back-button:hover {
   background-color: rgba(138, 180, 248, 0.08); /* Light hover effect */
 }
+.error-message {
+  color: #ea4335; /* Google's error red color */
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.error-message {
+  color: #ea4335;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.back-button {
+  background-color: transparent;
+  color: #a8c7fa;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: rgba(138, 180, 248, 0.08);
+}
